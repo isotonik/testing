@@ -1,0 +1,16 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 158.69.19.220
+	netmask 255.255.255.255
+	broadcast 158.69.19.220
+	post-up route add 158.69.245.254 dev eth0
+	post-up route add default gw 158.69.245.254
+	post-down route del default gw 158.69.245.254
+	post-down route del 158.69.245.254 dev eth0
